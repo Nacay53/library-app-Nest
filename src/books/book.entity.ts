@@ -1,7 +1,19 @@
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+
+@Entity()
 export class Book {
-    id: number;
-    title: string;
-    author: string;
-    genre: string;
-    rating: number;
-}  
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  title: string;
+
+  @Column()
+  author: string;
+
+  @Column()
+  genre: string;
+
+  @Column({ type: 'float' })
+  rating: number;
+}
