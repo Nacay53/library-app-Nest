@@ -17,4 +17,17 @@ export class BooksService {
   findOne(id: number): Promise<Book> {
     return this.booksRepository.findOne({ where: { id } });
   }
+
+  create(book: Book): Promise<Book> {
+    return this.booksRepository.save(book);
+  }
+
+  async update(id: number, updatedBook: Partial<Book>): Promise<Book> {
+    await this.booksRepository.update(id, updatedBook);
+    return this.findOne(id);
+  }
+
+  remove(id: number): Promise<void> {
+    return this.booksRepository.delete(id).then(() => undefined);
+  }
 }
